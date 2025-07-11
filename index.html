@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sip and Spill</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🥤 Sip and Spill 💬</h1>
+
+      <select id="categorySelect" onchange="getNewQuestion(true)">
+        <option value="all">All Categories</option>
+        <option value="funny">Funny</option>
+        <option value="romantic">Romantic</option>
+        <option value="spicy">Spicy</option>
+        <option value="deep">Deep</option>
+        <option value="custom">Custom</option>
+      </select>
+
+      <div class="card" id="questionCard">
+        <p id="question">Click the button to start!</p>
+      </div>
+
+      <div class="buttons">
+        <button onclick="getNewQuestion()">Next Question</button>
+        <button onclick="showPreviousQuestion()">Back</button>
+        <button class="sip" onclick="playSound('sip')">Sip 🚫</button>
+        <button class="spill" onclick="playSound('spill')">Spill ✅</button>
+      </div>
+
+      <div class="custom-entry">
+        <input
+          type="text"
+          id="customInput"
+          placeholder="Enter your custom question..."
+        />
+        <button onclick="addCustomQuestion()">Add</button>
+      </div>
+
+      <audio
+        id="sipSound"
+        src="https://www.soundjay.com/button/beep-07.mp3"
+      ></audio>
+      <audio
+        id="spillSound"
+        src="https://www.soundjay.com/button/beep-10.mp3"
+      ></audio>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

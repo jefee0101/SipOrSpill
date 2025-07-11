@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background animation container */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #1f1e1e 0%, #000000 100%);
+  animation: pulseLight 6s ease-in-out infinite alternate;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* Smooth animated radial light glow */
+@keyframes pulseLight {
+  0% {
+    transform: scale(1);
+    background-position: 50% 50%;
+  }
+  100% {
+    transform: scale(1.2);
+    background-position: 48% 52%;
+  }
+}
+
+/* Optional: Add slow floating gradient overlay */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, #111111 25%, #1b1b1b 50%, #000000 75%);
+  background-size: 400% 400%;
+  animation: waveGlow 20s linear infinite;
+  z-index: -2;
+  opacity: 0.3;
+}
+
+@keyframes waveGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(34, 34, 34, 0.85); /* semi-transparent dark */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+select {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+}
+
+.card {
+  background: #444;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  min-height: 80px;
+  transition: transform 0.3s ease;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.buttons button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.sip {
+  background: #d9534f;
+  color: white;
+}
+
+.spill {
+  background: #5cb85c;
+  color: white;
+}
+
+button:first-child {
+  background: #0275d8;
+  color: white;
+}
+
+.custom-entry {
+  margin-top: 20px;
+}
+
+.custom-entry input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 70%;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.custom-entry button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
