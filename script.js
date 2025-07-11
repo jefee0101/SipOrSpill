@@ -97,8 +97,8 @@ let spillCount = 0;
 
 function getNewQuestion(reset = false) {
   const category = document.getElementById("categorySelect").value;
-
   let questionPool = [];
+
   if (category === "all") {
     Object.values(allQuestions).forEach(arr => questionPool.push(...arr));
   } else {
@@ -118,7 +118,6 @@ function getNewQuestion(reset = false) {
 
   if (currentQuestion) previousQuestions.push(currentQuestion);
   currentQuestion = newQuestion;
-
   showQuestion(newQuestion);
 }
 
@@ -160,13 +159,25 @@ function addCustomQuestion() {
 }
 
 function handleSip() {
+  if (!currentQuestion) return;
   sipCount++;
   document.getElementById("sipCount").textContent = sipCount;
   playSound("sip");
+  logHistory("Sip", currentQuestion);
 }
 
 function handleSpill() {
+  if (!currentQuestion) return;
   spillCount++;
   document.getElementById("spillCount").textContent = spillCount;
   playSound("spill");
+  logHistory("Spill", currentQuestion);
+}
+
+function logHistory(type, question) {
+  const list = document.getElementById("historyList");
+  const li = document.createElement("li");
+  li.className = type.toLowerCase();
+  li.innerHTML = `<span>${type === "Spill" ? "🟢 Spill" : "🔴 Sip"}</span>: ${question}`;
+  list.prepend(li);
 }
