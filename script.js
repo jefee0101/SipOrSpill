@@ -19,7 +19,7 @@ const allQuestions = {
     "What’s the weirdest text you've ever received?",
     "What’s the most random thing you’ve Googled?",
     "What's the silliest fight you’ve had?",
-    "Have you ever mistaken a stranger for someone else?",
+    "Have you ever mistaken a stranger for someone else?"
   ],
   romantic: [
     "Who was your first crush?",
@@ -41,7 +41,7 @@ const allQuestions = {
     "Have you ever dreamed of someone romantically?",
     "Have you ever kept a relationship secret?",
     "Do you believe love can last forever?",
-    "What’s the most romantic thing someone did for you?",
+    "What’s the most romantic thing someone did for you?"
   ],
   spicy: [
     "Have you ever had a secret relationship?",
@@ -63,7 +63,7 @@ const allQuestions = {
     "What's the spiciest rumor you've heard about yourself?",
     "Would you ever date someone just for fun?",
     "Have you ever had a flirty dream about someone in this room?",
-    "What’s something flirty you've done you regret?",
+    "What’s something flirty you've done you regret?"
   ],
   deep: [
     "What's your biggest fear?",
@@ -85,27 +85,28 @@ const allQuestions = {
     "What memory haunts you the most?",
     "What motivates you when you're down?",
     "Have you ever lost someone close?",
-    "What’s one thing you fear people will discover about you?",
+    "What’s one thing you fear people will discover about you?"
   ],
-  custom: [],
+  custom: []
 };
 
 let previousQuestions = [];
 let currentQuestion = "";
+let sipCount = 0;
+let spillCount = 0;
 
 function getNewQuestion(reset = false) {
   const category = document.getElementById("categorySelect").value;
 
   let questionPool = [];
   if (category === "all") {
-    Object.values(allQuestions).forEach((arr) => questionPool.push(...arr));
+    Object.values(allQuestions).forEach(arr => questionPool.push(...arr));
   } else {
     questionPool = [...allQuestions[category]];
   }
 
   if (questionPool.length === 0) {
-    document.getElementById("question").textContent =
-      "No questions available in this category.";
+    document.getElementById("question").textContent = "No questions available in this category.";
     return;
   }
 
@@ -156,4 +157,16 @@ function addCustomQuestion() {
   allQuestions.custom.push(text);
   input.value = "";
   alert("Custom question added!");
+}
+
+function handleSip() {
+  sipCount++;
+  document.getElementById("sipCount").textContent = sipCount;
+  playSound("sip");
+}
+
+function handleSpill() {
+  spillCount++;
+  document.getElementById("spillCount").textContent = spillCount;
+  playSound("spill");
 }
